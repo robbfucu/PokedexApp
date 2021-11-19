@@ -1,28 +1,20 @@
-import React from 'react';
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
-import Pokemon from './components/Pokemon'
-import Details from './components/Details'
+import React, { Component } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Pokemons from './Components/Pokemons';
+import Details from './Components/Details'
 
-const appNavigator = createStackNavigator({
-  Home: {
-    screen: Pokemon
-  },
-  Details: {
-    screen: Details
-  },
-},
-  {
-    initialRouteName: 'Home'
-  },
-);
+const Stack = createNativeStackNavigator();
 
-const AppContainer = createAppContainer(stackNavigator);
-
-class App extends Component {
-  render () {
-    return <AppContainer />
-  }
+function App () {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={Pokemons} />
+        <Stack.Screen name="Details" component={Details} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 }
 
 export default App;
